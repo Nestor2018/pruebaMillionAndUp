@@ -10,27 +10,29 @@ import colors from '../../utils/colors';
 */
 
 const CoinItem = ({coin, onPress}: any) => {
+  const {symbol, name, price_usd, percent_change_1h} = coin;
   /**
  Muestra una imagen dependiendo de si el valor del coin subio o bajo en la ustima hora
 */
-  const getImageArrow = () => {
-    if (coin.percent_change_1h > 0) {
-      return require('../../assets/arrow_up.png');
-    } else {
-      return require('../../assets/arrow_down.png');
-    }
+  const getImageArrow = (percentChange: number) => {
+    return percentChange > 0
+      ? require('../../assets/arrow_up.png')
+      : require('../../assets/arrow_down.png');
   };
 
   return (
     <Pressable onPress={onPress} style={styles.container} testID="coinItem">
       <View style={styles.row}>
-        <Text style={styles.symbolText}>{coin.symbol}</Text>
-        <Text style={styles.nameText}>{coin.name}</Text>
-        <Text style={styles.price}> {`$${coin.price_usd}`}</Text>
+        <Text style={styles.symbolText}>{symbol}</Text>
+        <Text style={styles.nameText}>{name}</Text>
+        <Text style={styles.price}> {`$${price_usd}`}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.percentText}>{coin.percent_change_1h}</Text>
-        <Image source={getImageArrow()} style={styles.imageIcon} />
+        <Text style={styles.percentText}>{percent_change_1h}</Text>
+        <Image
+          source={getImageArrow(percent_change_1h)}
+          style={styles.imageIcon}
+        />
       </View>
     </Pressable>
   );

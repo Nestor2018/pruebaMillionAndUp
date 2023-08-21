@@ -3,11 +3,13 @@ import {View, StyleSheet, TextInput, Platform} from 'react-native';
 
 import colors from '../../utils/colors';
 
+interface CoinSearchProps {
+  onChange: (query: string) => void;
+}
 /**
  component CoinSearch (barra de busqueda para filtrar coins)
 */
-
-const CoinSearch = (props: any) => {
+const CoinSearch: React.FC<CoinSearchProps> = ({onChange}) => {
   const [query, setQuery] = useState<string>('');
 
   /**
@@ -16,8 +18,8 @@ const CoinSearch = (props: any) => {
   */
   const handleText = (queryInput: string) => {
     setQuery(queryInput);
-    if (props.onChange) {
-      props.onChange(queryInput);
+    if (onChange) {
+      onChange(queryInput);
     }
   };
 

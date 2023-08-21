@@ -71,7 +71,7 @@ const ListCoins = ({navigation}: any) => {
   return (
     <SafeAreaView style={styles.container} testID="listCoins">
       <CoinSearch onChange={handleSearch} />
-      {loading ? <Loader /> : null}
+      {loading ? <Loader testID="loader"/> : null}
       <FlatList
         data={coins}
         renderItem={renderItem}

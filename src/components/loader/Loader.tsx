@@ -5,7 +5,7 @@ import {StyleSheet, ActivityIndicator} from 'react-native';
  component Loader (Muestra un spiner cuando se esta cargando informacion en la pantalla)
 */
 const Loader = () => (
-  <ActivityIndicator color="white" size="large" style={styles.loader} />
+  <ActivityIndicator color="white" size="large" style={styles.loader} testID="loader"/>
 );
 
 const styles = StyleSheet.create({

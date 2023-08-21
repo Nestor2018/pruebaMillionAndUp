@@ -3,15 +3,26 @@ import {View, Text, StyleSheet} from 'react-native';
 
 import colors from '../../utils/colors';
 
+interface CoinMarketItemProps {
+  market: {
+    name: string;
+    price_usd: string;
+  };
+}
+
 /**
  component CoinMarketItem (Renderiza market del coin)
   @param {object} market 
 **/
-const CoinMarketItem = ({market}: any) => {
+const CoinMarketItem: React.FC<CoinMarketItemProps> = ({market}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.nameText}>{market.name}</Text>
-      <Text style={styles.priceText}>{market.price_usd}</Text>
+      <Text style={styles.nameText} testID="marketName">
+        {market.name}
+      </Text>
+      <Text style={styles.priceText} testID="marketPrice">
+        {market.price_usd}
+      </Text>
     </View>
   );
 };
